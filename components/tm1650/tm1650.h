@@ -17,11 +17,8 @@ class TM1650Display;
 
 using tm1650_writer_t = std::function<void(TM1650Display &)>;
 
-#if ESPHOME_VERSION_CODE >= VERSION_CODE(2023, 12, 0)
+
 class TM1650Display : public i2c::I2CDevice {
-#else
-class TM1650Display : public PollingComponent, public i2c::I2CDevice {
-#endif  // VERSION_CODE(2023, 12, 0)
  public:
   void set_writer(tm1650_writer_t &&writer);
   void set_intensity(uint8_t intensity);
